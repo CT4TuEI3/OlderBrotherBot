@@ -16,12 +16,18 @@ async def ping(ctx):
     await ctx.send(f'{ctx.author.mention} pong!')
 
 @bot.command(name='hello')
-async def ping(ctx):
-    await ctx.send(f'Здарова бандиты! https://cdn.discordapp.com/attachments/1008127694124355679/1078038224330567731/hello.webm')    
+async def hello(ctx):
+    await ctx.message.delete()
+    embed = discord.Embed(
+        color = 0xffa3e0
+    )
+    embed.set_image(url='https://media.tenor.com/UKDNsxezWBMAAAAC/hello-brother.gif')
+    await ctx.send(embed = embed)  
 
 @bot.command(name='content')
-async def ping(ctx: commands.context, *, args):
+async def content(ctx: commands.context, *, args):
+    await ctx.message.delete()
     result = str(args)
-    await ctx.send(embed=discord.Embed(title=f'{result}',description="Здарова, Владимир! Я научился отправлять эмбеды" , color=0xffa3e0))
+    await ctx.send(embed=discord.Embed(description=result , color=0xffa3e0))
 
 bot.run(config['token'])
